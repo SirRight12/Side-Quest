@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu2vhi77s4gko"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4way7"]
+size = Vector3(1, 4, 1)
+
+[node name="Node" type="Node"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="SubViewport"]
+position = Vector2(256, 256)
+scale = Vector2(3, 3)
+mesh = SubResource("BoxMesh_4way7")

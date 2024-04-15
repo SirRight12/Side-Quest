@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://71ruewjnctke"]
+
+[ext_resource type="Script" path="res://PlayerController.gd" id="1_l1nas"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tui56"]
+size = Vector2(40, 40)
+
+[node name="CharacterBody2D" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_l1nas")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tui56")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.113725, 0.113725, 1, 1)
+polygon = PackedVector2Array(0, -20, -21, 20, 20, 20)
+uv = PackedVector2Array(0, -20, -21, 20, 20, 20)
+
+[node name="Cannon" type="Marker2D" parent="."]
+position = Vector2(0, -34.202)

@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2yiqdj6qtoaa"]
+
+[ext_resource type="Script" path="res://Bullet.gd" id="1_8popo"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_vcpct"]
+size = Vector3(1, 8, 0)
+
+[sub_resource type="Gradient" id="Gradient_wwhy3"]
+offsets = PackedFloat32Array(0, 0.997443, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_tcoy0"]
+gradient = SubResource("Gradient_wwhy3")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_t20v0"]
+size = Vector2(1, 8)
+
+[node name="Laser" type="Area2D" groups=["bullet"]]
+scale = Vector2(5, 5)
+script = ExtResource("1_8popo")
+base_speed = 1000
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="."]
+mesh = SubResource("BoxMesh_vcpct")
+texture = SubResource("GradientTexture1D_tcoy0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_t20v0")
