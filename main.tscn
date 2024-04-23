@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://8ybqyll5qplg"]
+
+[ext_resource type="Script" path="res://GameManager.gd" id="1_8nitj"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_0u87r"]
+viewport_path = NodePath("Game")
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8nitj")
+
+[node name="View" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="View"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextureRect" type="TextureRect" parent="View"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_0u87r")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Game" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(1182, 680)

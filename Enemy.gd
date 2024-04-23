@@ -13,6 +13,7 @@ func _ready():
 func body_enter(body:CollisionObject2D):
 	if body.is_in_group("player"):
 		body.queue_free()
+		body.died.emit()
 		queue_free()
 func area_enter(area:Area2D):
 	if area.is_in_group("bullet"):

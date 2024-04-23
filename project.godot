@@ -12,9 +12,13 @@ config_version=5
 
 config/name="2d Arcade"
 config/description="Project of all time"
-run/main_scene="res://level_1.tscn"
+run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.2", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[dotnet]
+
+project/assembly_name="2d Arcade"
 
 [input]
 

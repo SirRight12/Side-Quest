@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://dwg3b6qlfajd5"]
+[gd_scene load_steps=8 format=3 uid="uid://dwg3b6qlfajd5"]
 
 [ext_resource type="PackedScene" uid="uid://71ruewjnctke" path="res://player.tscn" id="1_nf83d"]
+[ext_resource type="Script" path="res://Game.gd" id="1_s16qw"]
 [ext_resource type="PackedScene" uid="uid://bnuhuxmyt1ljr" path="res://space_particles.tscn" id="2_6o5oy"]
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="3_yt8v5"]
 [ext_resource type="PackedScene" uid="uid://dbhf7cbk7q3wf" path="res://enemy.tscn" id="4_e28xg"]
@@ -12,10 +13,16 @@ size = Vector2(20, 648)
 size = Vector2(1152, 20)
 
 [node name="Node2D" type="Node2D"]
+position = Vector2(2.08165e-12, 2.08165e-12)
+script = ExtResource("1_s16qw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+limit_left = -586
+limit_top = -340
+limit_right = 586
+limit_bottom = 340
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("1_nf83d")]
+[node name="Player" parent="." instance=ExtResource("1_nf83d")]
 position = Vector2(0, 300)
 
 [node name="Walls" type="Node2D" parent="."]
@@ -62,3 +69,5 @@ position = Vector2(0, -324)
 script = ExtResource("3_yt8v5")
 enemies = Array[PackedScene]([ExtResource("4_e28xg")])
 spawn_area_one = Vector2i(576, -324)
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]

@@ -7,8 +7,9 @@ size = Vector2(41, 39)
 
 [node name="Enemy" type="Area2D"]
 rotation = 3.14159
+scale = Vector2(1.5, 1.5)
 script = ExtResource("1_rxynk")
-speed = 300
+speed = 200
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.500001, 0.5)

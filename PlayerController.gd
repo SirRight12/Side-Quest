@@ -1,5 +1,5 @@
 extends CharacterBody2D
-
+signal died()
 
 const SPEED = 500.0
 @onready var cannon:Marker2D = $Cannon
