@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Enemy.gd" id="1_rxynk"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b60ik"]
+resource_local_to_scene = true
 size = Vector2(41, 39)
 
 [node name="Enemy" type="Area2D"]
@@ -10,6 +11,7 @@ rotation = 3.14159
 scale = Vector2(1.5, 1.5)
 script = ExtResource("1_rxynk")
 speed = 200
+life_time = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.500001, 0.5)

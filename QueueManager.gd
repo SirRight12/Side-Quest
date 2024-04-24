@@ -18,16 +18,13 @@ func timeout(time):
 	await timer.timeout
 	return true
 func update_queue():
-	print(!sleeping)
 	if !sleeping: return
 	run_queue()
 func run_queue():
 	sleeping = false
 	await timeout(delay)
-	print("hello?")
 	queue.pop_front()
 	queue_reached.emit()
-	print("queue reached!")
 	if queue.size() <= 0:
 		sleeping = true
 		sleep.emit()

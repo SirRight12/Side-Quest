@@ -3,14 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://71ruewjnctke" path="res://player.tscn" id="1_nf83d"]
 [ext_resource type="Script" path="res://Game.gd" id="1_s16qw"]
 [ext_resource type="PackedScene" uid="uid://bnuhuxmyt1ljr" path="res://space_particles.tscn" id="2_6o5oy"]
+[ext_resource type="PackedScene" uid="uid://cfvlmb4oytj4j" path="res://walls.tscn" id="3_fn1e6"]
 [ext_resource type="Script" path="res://EnemySpawner.gd" id="3_yt8v5"]
 [ext_resource type="PackedScene" uid="uid://dbhf7cbk7q3wf" path="res://enemy.tscn" id="4_e28xg"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cq3al"]
-size = Vector2(20, 648)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_djvew"]
-size = Vector2(1152, 20)
+[ext_resource type="PackedScene" uid="uid://wnu362blek1t" path="res://background.tscn" id="4_tc0ve"]
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(2.08165e-12, 2.08165e-12)
@@ -25,49 +21,14 @@ limit_bottom = 340
 [node name="Player" parent="." instance=ExtResource("1_nf83d")]
 position = Vector2(0, 300)
 
-[node name="Walls" type="Node2D" parent="."]
+[node name="Walls" parent="." instance=ExtResource("3_fn1e6")]
 
-[node name="RightWall" type="StaticBody2D" parent="Walls"]
-position = Vector2(586, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/RightWall"]
-shape = SubResource("RectangleShape2D_cq3al")
-
-[node name="LeftWall" type="StaticBody2D" parent="Walls"]
-position = Vector2(-586, 0)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/LeftWall"]
-shape = SubResource("RectangleShape2D_cq3al")
-
-[node name="BottomWall" type="StaticBody2D" parent="Walls"]
-position = Vector2(0, 334)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/BottomWall"]
-shape = SubResource("RectangleShape2D_djvew")
-
-[node name="TopWall" type="StaticBody2D" parent="Walls"]
-position = Vector2(0, -334)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Walls/TopWall"]
-shape = SubResource("RectangleShape2D_djvew")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0705882, 0.105882, 0.207843, 1)
+[node name="Background" parent="." instance=ExtResource("4_tc0ve")]
 
 [node name="Space Particles" parent="." instance=ExtResource("2_6o5oy")]
 position = Vector2(0, -324)
 
-[node name="Node" type="Node" parent="."]
+[node name="Spawner" type="Node" parent="."]
 script = ExtResource("3_yt8v5")
 enemies = Array[PackedScene]([ExtResource("4_e28xg")])
-spawn_area_one = Vector2i(576, -324)
-
-[connection signal="died" from="Player" to="." method="_on_player_died"]
+enemies_to_spawn = 5

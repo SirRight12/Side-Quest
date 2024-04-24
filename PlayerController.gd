@@ -1,16 +1,17 @@
 extends CharacterBody2D
 signal died()
-
-const SPEED = 500.0
+var SPEED = 500.0
+var can_fire = true
 @onready var cannon:Marker2D = $Cannon
 var bullets:PackedScene = preload("res://laser.tscn")
 @export var added_speed:int = 10
 @export var fire:bool:
 	set = set_fire
-func set_fire(val):
+func set_fire(_val):
 	fire = false
 	shoot()
 func shoot():
+	if !can_fire: return
 	var bullet:Bullet = bullets.instantiate()
 	$"..".add_child(bullet)
 	bullet.set_position(cannon.get_global_position())

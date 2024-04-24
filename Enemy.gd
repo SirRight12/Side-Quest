@@ -1,5 +1,6 @@
 extends Area2D
 class_name Enemy
+signal died()
 @export var max_hp:int = 1
 @onready var hp = max_hp
 @export var speed:int = 500
@@ -20,6 +21,7 @@ func area_enter(area:Area2D):
 		hp -= area.damage
 		area.queue_free()
 		if hp <= 0:
+			died.emit()
 			queue_free()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -33,5 +35,6 @@ func timeout(time):
 func launch():
 	enabled = true
 	await timeout(life_time)
+	died.emit()
 	enabled = false
 	queue_free()

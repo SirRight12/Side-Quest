@@ -1,0 +1,29 @@
+[gd_scene load_steps=9 format=3 uid="uid://ba0q11bxylih2"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_m516c"]
+[ext_resource type="PackedScene" uid="uid://71ruewjnctke" path="res://player.tscn" id="2_mh14x"]
+[ext_resource type="PackedScene" uid="uid://bnuhuxmyt1ljr" path="res://space_particles.tscn" id="3_yypgv"]
+[ext_resource type="PackedScene" uid="uid://wnu362blek1t" path="res://background.tscn" id="4_qjpcs"]
+[ext_resource type="PackedScene" uid="uid://cfvlmb4oytj4j" path="res://walls.tscn" id="5_hfwra"]
+[ext_resource type="Script" path="res://EnemySpawner.gd" id="6_lbnsc"]
+[ext_resource type="PackedScene" uid="uid://dbhf7cbk7q3wf" path="res://enemy.tscn" id="7_vhqi6"]
+[ext_resource type="PackedScene" uid="uid://tprn6i1ifo0e" path="res://speedy_enemy.tscn" id="8_nwcw1"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_m516c")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Player" parent="." instance=ExtResource("2_mh14x")]
+position = Vector2(2.08165e-12, 300)
+
+[node name="Space Particles" parent="." instance=ExtResource("3_yypgv")]
+position = Vector2(2.08165e-12, -324)
+
+[node name="Background" parent="." instance=ExtResource("4_qjpcs")]
+
+[node name="Walls" parent="." instance=ExtResource("5_hfwra")]
+
+[node name="Spawner" type="Node" parent="."]
+script = ExtResource("6_lbnsc")
+enemies = Array[PackedScene]([ExtResource("7_vhqi6"), ExtResource("8_nwcw1")])
